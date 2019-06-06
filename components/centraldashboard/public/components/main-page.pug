@@ -57,10 +57,12 @@ app-drawer-layout.flex(narrow='{{narrowMode}}',
                                 entry-animation='fade-in-animation',
                                 exit-animation='fade-out-animation')
                 neon-animatable(page='dashboard')
-                    dashboard-view(namespace='[[namespace]]',
-                        platform-info='[[platformInfo]]')
+                    template(is='dom-if', if="[[equals(page, 'dashboard')]]", restamp)
+                        dashboard-view(namespace='[[namespace]]',
+                            platform-info='[[platformInfo]]')
                 neon-animatable(page='activity')
-                    activity-view(namespace='[[queryParams.ns]]')
+                    template(is='dom-if', if="[[equals(page, 'activity')]]", restamp)
+                        activity-view(namespace='[[queryParams.ns]]')
                 neon-animatable(page='iframe')
                     iframe#PageFrame.flex
                 neon-animatable(page='not_found')
